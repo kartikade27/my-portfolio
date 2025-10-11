@@ -1,0 +1,56 @@
+
+/* Playfair Display - Signature / Headings */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* Inter - Body text / Type animation */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+/* Poppins - Buttons / CTA */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap'); 
+
+/* sora */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+/* whisper  */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&family=Whisper&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme{
+  --font-logo:"Playfair Display", sans-serif;
+  --font-button:"Poppins", sans-serif;
+  --font-sora:"Sora" ,sans-serif;
+  --font-whisper:"Whisper", cursive;
+
+}
+
+
+
+ body {
+  font-family: 'Inter', sans-serif;
+  background-color: #111827; 
+  color: #f9fafb; 
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+ @keyframes wave {
+            0% { transform: rotate(0deg); }
+            15% { transform: rotate(14deg); }
+            30% { transform: rotate(-8deg); }
+            40% { transform: rotate(14deg); }
+            50% { transform: rotate(-4deg); }
+            60% { transform: rotate(10deg); }
+            70% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+          }
+          .animate-wave {
+            display: inline-block;
+            animation: wave 2s infinite;
+          }
+          .origin-bottom {
+            transform-origin: 70% 70%;
+          }
