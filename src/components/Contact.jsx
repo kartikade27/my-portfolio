@@ -20,34 +20,25 @@ const Contact = () => {
       )
       .then(
         () => {
-          toast.success("Email Sent Successfully!", {
-            position: "top-center",
-            autoClose: 2000,
-          });
+          toast.success("Email Sent Successfully!", { position: "top-center", autoClose: 2000 });
           formRef.current.reset();
         },
         (error) => {
           console.error("Error:", error);
-          toast.error("Something went wrong!", {
-            position: "top-center",
-            autoClose: 2000,
-          });
+          toast.error("Something went wrong!", { position: "top-center", autoClose: 2000 });
         }
       )
       .finally(() => setLoading(false));
   };
 
   return (
-    <section
-      id="contact"
-      className="bg-[#0A0F2C] py-20 min-h-screen flex items-center font-body"
-    >
+    <section id="contact" className="bg-[#0B1120] py-20 min-h-screen flex items-center font-body">
       <ToastContainer position="top-center" autoClose={2000} />
 
       <div className="container mx-auto px-6 text-white">
-        <h2 className="text-4xl font-logo font-extrabold text-white mb-12 text-center">
+        <h2 className="text-4xl font-logo font-extrabold text-center mb-12">
           Contact
-          <span className="bg-gradient-to-r ml-2 from-blue-400 to-purple-500 text-transparent bg-clip-text">
+          <span className="bg-gradient-to-r ml-2 from-[#14B8A6] to-[#38BDF8] text-transparent bg-clip-text">
             Me
           </span>
         </h2>
@@ -55,52 +46,56 @@ const Contact = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="max-w-lg mx-auto p-8 rounded-lg shadow-lg bg-[#0A0F2C] border border-indigo-500/50"
+          className="max-w-lg mx-auto p-8 rounded-2xl border border-transparent 
+                     hover:border-gradient-to-r hover:from-[#14B8A6] hover:to-[#38BDF8] 
+                     transition-all duration-300 bg-[#111827]"
         >
           <div className="form-control mb-4">
-            <label className="label font-body">
+            <label className="label font-body text-left">
               <span className="label-text text-white">Name</span>
             </label>
             <input
               type="text"
               name="name"
               placeholder="Your Name"
-              className="input input-bordered input-dark w-full font-body"
+              className="input w-full font-body p-3 rounded-md bg-transparent border-[#14B8A6]/60 focus:border-[#14B8A6] focus:ring-1 focus:ring-[#38BDF8] focus:outline-none"
               required
             />
           </div>
 
           <div className="form-control mb-4">
-            <label className="label font-body">
+            <label className="label font-body text-left">
               <span className="label-text text-white">Email</span>
             </label>
             <input
               type="email"
               name="email"
               placeholder="Your Email"
-              className="input input-bordered input-dark w-full font-body"
+              className="input w-full font-body p-3 rounded-md bg-transparent border-[#14B8A6]/60 focus:border-[#14B8A6] focus:ring-1 focus:ring-[#38BDF8] focus:outline-none"
               required
             />
           </div>
 
           <div className="form-control mb-4">
-            <label className="label font-body">
+            <label className="label font-body text-left">
               <span className="label-text text-white">Message</span>
             </label>
             <textarea
               name="message"
               placeholder="Your Message"
-              className="textarea textarea-bordered textarea-dark w-full font-body"
               rows="5"
+              className="textarea w-full font-body p-3 rounded-md bg-transparent border-[#14B8A6]/60 focus:border-[#14B8A6] focus:ring-1 focus:ring-[#38BDF8] focus:outline-none"
               required
-            ></textarea>
+            />
           </div>
- 
-                    
+
           <div className="form-control mt-6">
             <button
               type="submit"
-              className={`px-6 py-2 border  border-indigo-500/50 hover:bg-gradient-to-r hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-sm transition duration-300 hover:opacity-90 hover:shadow-xl w-full font-body ${loading ? "loading" : ""}`}
+              className={`w-full px-6 py-3 rounded-md font-bold text-white 
+                         bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] 
+                         hover:opacity-90 hover:scale-105 transition-transform duration-300 
+                         ${loading ? "cursor-not-allowed opacity-70" : ""}`}
             >
               {loading ? "Sending..." : "Send Message"}
             </button>

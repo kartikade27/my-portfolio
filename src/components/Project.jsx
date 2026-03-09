@@ -9,17 +9,28 @@ const Project = () => {
 
   const projects = [
     {
-      title: "personal-finance-backend",
+      title: "Employee-Management-System",
       description:
-        "A robust backend system for managing personal finances, including income, expenses, and budgeting. Built with Spring Boot and Java, it provides secure REST APIs for CRUD operations and supports user authentication. Designed to help users track and analyze their financial data efficiently.",
-      technologies: ["Spring Boot", "Java", "MySQL", "Swagger"],
+        "A role-based Employee Management System built with React.js, TailwindCSS, DaisyUI, and Spring Boot. This project demonstrates a full-stack application with Admin, HR, and Employee dashboards, secure authentication, document management, and theme toggling.",
+      technologies: [
+        "Spring Boot",
+        "Java",
+        "MySQL",
+        "Swagger",
+        "Tailwind css",
+        "Daisy UI",
+        "JWT",
+        "Spring Security",
+        "Cloudinary",
+      ],
       imageUrl: eventImg,
       githubLink: "https://github.com/kartikade27/personal-finance-backend",
+      previewLink: "https://kartikade27.github.io/employee-management-frontend/",
     },
     {
-      title: "Library Management System ",
+      title: "Library Management System",
       description:
-        "A web-based system for managing library operations, including book cataloging, issuing, and returning. Built with Java and Spring Boot, it offers secure user authentication and CRUD operations for books and members. Designed to streamline library workflows and improve efficiency.",
+        "A web-based system for managing library operations, including book cataloging, issuing, and returning. Built with Java and Spring Boot, it offers secure user authentication and CRUD operations for books and members.",
       roles: [
         {
           role: "Admin Role",
@@ -35,7 +46,7 @@ const Project = () => {
           details: [
             "Can create, update, and view book records.",
             "Can issue books to users and manage borrow/return workflows.",
-            "Cannot delete books — ensuring audit integrity and traceability.",
+            "Cannot delete books — ensuring audit integrity.",
           ],
         },
         {
@@ -43,7 +54,7 @@ const Project = () => {
           details: [
             "Can browse available books.",
             "Can borrow books and view return dates.",
-            "Can track their own borrowing history and due dates.",
+            "Can track borrowing history and due dates.",
           ],
         },
       ],
@@ -54,28 +65,26 @@ const Project = () => {
         "MySQL",
         "Swagger/OpenAPI",
       ],
-      imageUrl: `${libImg}`,
+      imageUrl: libImg,
       githubLink: "https://github.com/kartikade27/Library_Management_system",
     },
     {
       title: "Blog Management System (BMS)",
       description:
-        "A full-featured platform for creating, managing, and publishing blog posts. Built with Spring Boot and Java, it supports user authentication, role-based access, and CRUD operations for posts and comments. Designed to help users maintain and share content efficiently with a clean, organized backend.",
+        "A platform for creating, managing, and publishing blog posts with role-based access and CRUD operations for posts and comments.",
       roles: [
         {
           role: "Admin Role",
           details: [
             "Full control over platform content and users.",
-            "Can manage posts, comments, users, and system settings.",
-            "Has access to dashboards for analytics and moderation tools.",
+            "Can manage posts, comments, users, and settings.",
           ],
         },
         {
           role: "User Role",
           details: [
-            "Can register, log in, and manage their own profile.",
             "Can create, edit, and delete their own blog posts.",
-            "Can interact with other users via comments, likes, follows, and unfollows.",
+            "Can comment and interact with other users.",
           ],
         },
       ],
@@ -86,30 +95,29 @@ const Project = () => {
         "MySQL",
         "Swagger/OpenAPI",
       ],
-      imageUrl: `${blogImg}`,
+      imageUrl: blogImg,
       githubLink: "https://github.com/kartikade27/blog-managment-system",
     },
   ];
 
   return (
-    <section id="projects" className=" bg-[#0A0F2C] py-20 font-body">
+    <section id="projects" className="bg-[#0B1120] py-20 font-body">
       <div className="container mx-auto px-6 text-center">
-        {/* Title */}
-        <h2 className="text-4xl font-logo font-extrabold text-white mb-12">
+
+        <h2 className="text-4xl font-logo font-extrabold text-[#F1F5F9] mb-12">
           My
-          <span className="bg-gradient-to-r ml-2 from-blue-400 to-purple-500 text-transparent bg-clip-text">
+          <span className="bg-gradient-to-r ml-2 from-[#14B8A6] to-[#38BDF8] text-transparent bg-clip-text">
             Projects
           </span>
         </h2>
 
-        {/* Grid */}
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="card bg-white shadow-xl rounded-lg overflow-hidden border border-white/20 transition-all duration-300"
+              className="card bg-[#111827] shadow-xl rounded-lg overflow-hidden border border-[#14B8A6]/30 transition-all duration-300"
             >
               <figure className="w-full h-64 overflow-hidden">
                 <img
@@ -120,17 +128,18 @@ const Project = () => {
               </figure>
 
               <div className="card-body p-6 text-start">
-                <h3 className="text-2xl font-logo font-bold text-gray-800">
+                <h3 className="text-2xl font-logo font-bold text-[#F1F5F9]">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mt-2 font-body">
+
+                <p className="text-[#94A3B8] mt-2 font-body">
                   {project.description}
                 </p>
 
                 <div className="card-actions mt-4">
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-button py-3 px-6 rounded-sm shadow-xl hover:opacity-80 transition duration-300 tracking-wider"
+                    className="bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] font-button py-3 px-6 rounded-md shadow-lg hover:opacity-90"
                   >
                     View Project
                   </button>
@@ -143,17 +152,16 @@ const Project = () => {
 
       {/* Modal */}
       {selectedProject && (
-        <div className="modal modal-open fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-          <div className="modal-box relative w-[90%] sm:w-[85%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[45%] bg-gray-900 border border-white/20 shadow-2xl rounded-xl max-h-[90vh] overflow-y-auto font-body">
-            {/* Close Button */}
+        <div className="modal modal-open fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="modal-box  relative w-[90%] md:w-[70%] lg:w-[60%] bg-[#111827] border border-[#14B8A6]/30 rounded-xl max-h-[90vh] overflow-y-auto">
+
             <button
               onClick={() => setSelectedProject(null)}
-              className="btn btn-sm btn-circle absolute right-4 top-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-80 font-button"
+              className="absolute right-4 top-4 bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] py-2 px-3 rounded-full"
             >
               ✕
             </button>
 
-            {/* Modal Image */}
             <figure className="w-full h-64 overflow-hidden rounded-lg mt-6">
               <img
                 src={selectedProject.imageUrl}
@@ -162,23 +170,22 @@ const Project = () => {
               />
             </figure>
 
-            {/* Title & Description */}
-            <h3 className="text-3xl font-logo font-bold text-white mt-6">
+            <h3 className="text-3xl font-bold text-[#F1F5F9] mt-6">
               {selectedProject.title}
             </h3>
-            <p className="text-gray-300 mt-2 font-body">
+
+            <p className="text-[#94A3B8] mt-2">
               {selectedProject.description}
             </p>
 
-            {/* Roles Section */}
             {selectedProject.roles && (
               <div className="mt-6 text-left">
                 {selectedProject.roles.map((roleItem, idx) => (
                   <div key={idx} className="mb-4">
-                    <h4 className="text-xl font-logo font-semibold text-white mb-2">
+                    <h4 className="text-xl font-semibold text-[#F1F5F9] mb-2">
                       {roleItem.role}
                     </h4>
-                    <ul className="list-disc list-inside text-gray-300 space-y-1 font-body">
+                    <ul className="list-disc list-inside text-[#94A3B8] space-y-1">
                       {roleItem.details.map((detail, index) => (
                         <li key={index}>{detail}</li>
                       ))}
@@ -188,27 +195,41 @@ const Project = () => {
               </div>
             )}
 
-            {/* Technologies */}
-            <h4 className="text-lg font-logo font-semibold text-white mt-4">
+            <h4 className="text-lg font-semibold text-[#F1F5F9] mt-4">
               Technologies Used:
             </h4>
-            <ul className="list-disc list-inside text-gray-300 mt-2 space-y-2 font-body">
+
+            <ul className="list-disc list-inside text-[#94A3B8] mt-2 space-y-2">
               {selectedProject.technologies.map((tech, idx) => (
                 <li key={idx}>{tech}</li>
               ))}
             </ul>
 
-            {/* GitHub Link */}
+            {/* Buttons */}
             <div className="mt-6 flex justify-end space-x-4">
+
+              {selectedProject.previewLink && (
+                <a
+                  href={selectedProject.previewLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-md"
+                >
+                  Live Preview
+                </a>
+              )}
+
               <a
                 href={selectedProject.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-button py-2 px-4 rounded-sm shadow-lg hover:opacity-80"
+                className="bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] py-2 px-4 rounded-md"
               >
                 View on GitHub
               </a>
+
             </div>
+
           </div>
         </div>
       )}
