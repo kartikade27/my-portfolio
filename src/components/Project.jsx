@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import eventImg from "../assets/img/event-managment-system.webp";
+import eventImg from "../assets/img/admin-dasgboard-img.png";
 import libImg from "../assets/img/libImg.png";
 import blogImg from "../assets/img/blogImg.png";
 
