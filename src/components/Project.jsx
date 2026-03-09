@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import eventImg from "../assets/img/admin-dasgboard-img.png";
+import eventImg from "../assets/img/admin-dashboard-img.png";
 import libImg from "../assets/img/libImg.png";
 import blogImg from "../assets/img/blogImg.png";
 
@@ -25,7 +25,8 @@ const Project = () => {
       ],
       imageUrl: eventImg,
       githubLink: "https://github.com/kartikade27/personal-finance-backend",
-      previewLink: "https://kartikade27.github.io/employee-management-frontend/",
+      previewLink:
+        "https://kartikade27.github.io/employee-management-frontend/",
     },
     {
       title: "Library Management System",
@@ -103,7 +104,6 @@ const Project = () => {
   return (
     <section id="projects" className="bg-[#0B1120] py-20 font-body">
       <div className="container mx-auto px-6 text-center">
-
         <h2 className="text-4xl font-logo font-extrabold text-[#F1F5F9] mb-12">
           My
           <span className="bg-gradient-to-r ml-2 from-[#14B8A6] to-[#38BDF8] text-transparent bg-clip-text">
@@ -131,18 +131,18 @@ const Project = () => {
                 <h3 className="text-2xl font-logo font-bold text-[#F1F5F9]">
                   {project.title}
                 </h3>
-
                 <p className="text-[#94A3B8] mt-2 font-body">
                   {project.description}
                 </p>
 
                 <div className="card-actions mt-4">
-                  <button
+                  <label
+                    htmlFor={`project-modal-${index}`}
+                    className="bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] font-button py-3 px-6 rounded-md shadow-lg hover:opacity-90 cursor-pointer"
                     onClick={() => setSelectedProject(project)}
-                    className="bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] font-button py-3 px-6 rounded-md shadow-lg hover:opacity-90"
                   >
                     View Project
-                  </button>
+                  </label>
                 </div>
               </div>
             </motion.div>
@@ -150,89 +150,95 @@ const Project = () => {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* DaisyUI Modal */}
       {selectedProject && (
-        <div className="modal modal-open fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="modal-box  relative w-[90%] md:w-[70%] lg:w-[60%] bg-[#111827] border border-[#14B8A6]/30 rounded-xl max-h-[90vh] overflow-y-auto">
+        <input
+          type="checkbox"
+          id="project-modal"
+          className="modal-toggle"
+          checked={!!selectedProject}
+          readOnly
+        />
+      )}
+      {/* Modal */}
+      <div className="modal">
+        <div className="modal-box relative max-w-3xl w-11/12 md:w-3/4 lg:w-1/2 bg-[#111827] border border-[#14B8A6]/30 rounded-xl max-h-[90vh] overflow-y-auto">
+          <button
+            onClick={() => setSelectedProject(null)}
+            className="btn btn-sm btn-circle absolute right-4 top-4 bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120]"
+          >
+            ✕
+          </button>
 
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute right-4 top-4 bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] py-2 px-3 rounded-full"
-            >
-              ✕
-            </button>
+          {selectedProject && (
+            <>
+              {/* Properly sized image */}
+              <figure className="w-full h-64 sm:h-80 md:h-96 lg:h-96 overflow-hidden rounded-lg mt-6">
+                <img
+                  src={selectedProject.imageUrl}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover object-center"
+                />
+              </figure>
 
-            <figure className="w-full h-64 overflow-hidden rounded-lg mt-6">
-              <img
-                src={selectedProject.imageUrl}
-                alt={selectedProject.title}
-                className="w-full h-full object-cover"
-              />
-            </figure>
+              <h3 className="text-3xl font-bold text-[#F1F5F9] mt-6">
+                {selectedProject.title}
+              </h3>
+              <p className="text-[#94A3B8] mt-2">
+                {selectedProject.description}
+              </p>
 
-            <h3 className="text-3xl font-bold text-[#F1F5F9] mt-6">
-              {selectedProject.title}
-            </h3>
-
-            <p className="text-[#94A3B8] mt-2">
-              {selectedProject.description}
-            </p>
-
-            {selectedProject.roles && (
-              <div className="mt-6 text-left">
-                {selectedProject.roles.map((roleItem, idx) => (
-                  <div key={idx} className="mb-4">
-                    <h4 className="text-xl font-semibold text-[#F1F5F9] mb-2">
-                      {roleItem.role}
-                    </h4>
-                    <ul className="list-disc list-inside text-[#94A3B8] space-y-1">
-                      {roleItem.details.map((detail, index) => (
-                        <li key={index}>{detail}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <h4 className="text-lg font-semibold text-[#F1F5F9] mt-4">
-              Technologies Used:
-            </h4>
-
-            <ul className="list-disc list-inside text-[#94A3B8] mt-2 space-y-2">
-              {selectedProject.technologies.map((tech, idx) => (
-                <li key={idx}>{tech}</li>
-              ))}
-            </ul>
-
-            {/* Buttons */}
-            <div className="mt-6 flex justify-end space-x-4">
-
-              {selectedProject.previewLink && (
-                <a
-                  href={selectedProject.previewLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-md"
-                >
-                  Live Preview
-                </a>
+              {selectedProject.roles && (
+                <div className="mt-6 text-left">
+                  {selectedProject.roles.map((roleItem, idx) => (
+                    <div key={idx} className="mb-4">
+                      <h4 className="text-xl font-semibold text-[#F1F5F9] mb-2">
+                        {roleItem.role}
+                      </h4>
+                      <ul className="list-disc list-inside text-[#94A3B8] space-y-1">
+                        {roleItem.details.map((detail, index) => (
+                          <li key={index}>{detail}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               )}
 
-              <a
-                href={selectedProject.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] py-2 px-4 rounded-md"
-              >
-                View on GitHub
-              </a>
+              <h4 className="text-lg font-semibold text-[#F1F5F9] mt-4">
+                Technologies Used:
+              </h4>
+              <ul className="list-disc list-inside text-[#94A3B8] mt-2 space-y-2">
+                {selectedProject.technologies.map((tech, idx) => (
+                  <li key={idx}>{tech}</li>
+                ))}
+              </ul>
 
-            </div>
+              <div className="mt-6 flex justify-end space-x-4">
+                {selectedProject.previewLink && (
+                  <a
+                    href={selectedProject.previewLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                  >
+                    Live Preview
+                  </a>
+                )}
 
-          </div>
+                <a
+                  href={selectedProject.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120]"
+                >
+                  View on GitHub
+                </a>
+              </div>
+            </>
+          )}
         </div>
-      )}
+      </div>
     </section>
   );
 };
