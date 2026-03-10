@@ -24,7 +24,7 @@ const Project = () => {
         "Cloudinary",
       ],
       imageUrl: eventImg,
-      githubLink: "https://github.com/kartikade27/employee-management-frontend",
+      githubLink: "https://github.com/kartikade27/employee-management-system",
       previewLink:
         "https://kartikade27.github.io/employee-management-frontend/",
     },
