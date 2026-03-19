@@ -1,6 +1,6 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import devImage from "../assets/img/man.jpg";
+import devImage from "../assets/img/dev.png";
 
 const Hero = () => {
   return (
