@@ -90,14 +90,15 @@ const Navbar = () => {
               className="fixed inset-0 bg-black backdrop-blur-sm"
             />
 
-            {/* Menu Panel */}
+            {/* Menu Panel (SIMPLE LEFT SLIDE) */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ type: "spring", stiffness: 80 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
               className="fixed top-0 left-0 h-full w-72 bg-[var(--color-surface)] p-6 shadow-xl border-r border-[var(--color-border)]"
             >
+              {/* Logo */}
               <div className="flex items-center space-x-3 mb-10">
                 <img
                   src={kartik}
@@ -109,6 +110,7 @@ const Navbar = () => {
                 </span>
               </div>
 
+              {/* Menu Items */}
               <div className="flex flex-col space-y-6 text-lg text-[var(--color-text-secondary)]">
                 {["Home", "About", "Projects", "Contact"].map((item) => (
                   <a
