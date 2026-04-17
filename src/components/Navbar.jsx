@@ -101,7 +101,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/70 z-[90]"
+              className=" md:hidden fixed inset-0 bg-black/70 z-[90]"
             />
 
             {/* ✅ FINAL Sidebar */}
@@ -114,7 +114,7 @@ const Navbar = () => {
                 backgroundColor: "#ffffff",
                 transform: "translateZ(0)",
               }}
-              className="fixed top-0 left-0 h-screen w-72 z-[100] p-6 shadow-2xl border-r border-[var(--color-border)]"
+              className="fixed top-0 left-0 md:hidden h-screen w-72 z-[100] p-6 shadow-2xl border-r border-[var(--color-border)]"
             >
               {/* Logo */}
               <div className="flex items-center space-x-3 mb-10">
