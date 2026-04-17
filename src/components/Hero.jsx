@@ -6,7 +6,7 @@ import devImage from "../assets/img/dev.png";
 const Hero = () => {
   return (
     <section
-      id="hero"
+      id="home"
       className="relative bg-[var(--color-bg)] min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* 🎮 Gaming Background Layer */}

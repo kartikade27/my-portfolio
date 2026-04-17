@@ -31,7 +31,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative bg-[var(--color-bg)] py-20 overflow-hidden">
+    <section id="contact" className="relative bg-[var(--color-bg)] py-20 overflow-hidden">
       
       <ToastContainer position="top-center" autoClose={2000} />
 

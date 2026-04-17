@@ -37,7 +37,7 @@ const Project = () => {
   ];
 
   return (
-    <section className="relative bg-[var(--color-bg)] py-20 overflow-hidden">
+    <section id="projects" className="relative bg-[var(--color-bg)] py-20 overflow-hidden">
       {/* 🔥 Background Glow */}
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-[var(--color-primary)]/20 blur-[120px] rounded-full"></div>
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[var(--color-secondary)]/20 blur-[120px] rounded-full"></div>
