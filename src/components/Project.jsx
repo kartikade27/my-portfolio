@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import eventImg from "../assets/img/admin-dashboard-img.png";
 import libImg from "../assets/img/libImg.png";
 import blogImg from "../assets/img/blogImg.png";
@@ -9,20 +9,10 @@ const Project = () => {
 
   const projects = [
     {
-      title: "Employee-Management-System",
+      title: "Employee Management System",
       description:
-        "A role-based Employee Management System built with React.js, TailwindCSS, DaisyUI, and Spring Boot. This project demonstrates a full-stack application with Admin, HR, and Employee dashboards, secure authentication, document management, and theme toggling.",
-      technologies: [
-        "Spring Boot",
-        "Java",
-        "MySQL",
-        "Swagger",
-        "Tailwind css",
-        "Daisy UI",
-        "JWT",
-        "Spring Security",
-        "Cloudinary",
-      ],
+        "Role-based full-stack system with Admin, HR & Employee dashboards. Secure authentication, document management, and scalable backend.",
+      technologies: ["Spring Boot", "Java", "MySQL", "JWT", "Tailwind"],
       imageUrl: eventImg,
       githubLink: "https://github.com/kartikade27/employee-management-system",
       previewLink:
@@ -31,214 +21,183 @@ const Project = () => {
     {
       title: "Library Management System",
       description:
-        "A web-based system for managing library operations, including book cataloging, issuing, and returning. Built with Java and Spring Boot, it offers secure user authentication and CRUD operations for books and members.",
-      roles: [
-        {
-          role: "Admin Role",
-          details: [
-            "Full control over the system.",
-            "Can manage users, librarians, and system-wide settings.",
-            "Has access to all book records and activity logs.",
-            "Can delete any book or user record if needed.",
-          ],
-        },
-        {
-          role: "Librarian Role",
-          details: [
-            "Can create, update, and view book records.",
-            "Can issue books to users and manage borrow/return workflows.",
-            "Cannot delete books — ensuring audit integrity.",
-          ],
-        },
-        {
-          role: "User Role",
-          details: [
-            "Can browse available books.",
-            "Can borrow books and view return dates.",
-            "Can track borrowing history and due dates.",
-          ],
-        },
-      ],
-      technologies: [
-        "Spring Boot",
-        "Spring Security",
-        "JWT",
-        "MySQL",
-        "Swagger/OpenAPI",
-      ],
+        "System for managing books, issuing & returning with role-based access and secure APIs.",
+      technologies: ["Spring Boot", "Spring Security", "JWT", "MySQL"],
       imageUrl: libImg,
       githubLink: "https://github.com/kartikade27/Library_Management_system",
     },
     {
-      title: "Blog Management System (BMS)",
+      title: "Blog Management System",
       description:
-        "A platform for creating, managing, and publishing blog posts with role-based access and CRUD operations for posts and comments.",
-      roles: [
-        {
-          role: "Admin Role",
-          details: [
-            "Full control over platform content and users.",
-            "Can manage posts, comments, users, and settings.",
-          ],
-        },
-        {
-          role: "User Role",
-          details: [
-            "Can create, edit, and delete their own blog posts.",
-            "Can comment and interact with other users.",
-          ],
-        },
-      ],
-      technologies: [
-        "Spring Boot",
-        "Spring Security",
-        "JWT",
-        "MySQL",
-        "Swagger/OpenAPI",
-      ],
+        "Platform to create, manage and publish blogs with authentication and role-based access.",
+      technologies: ["Spring Boot", "JWT", "MySQL"],
       imageUrl: blogImg,
       githubLink: "https://github.com/kartikade27/blog-managment-system",
     },
   ];
 
   return (
-    <section id="projects" className="bg-[#0B1120] py-20 font-body">
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-logo font-extrabold text-[#F1F5F9] mb-12">
-          My
-          <span className="bg-gradient-to-r ml-2 from-[#14B8A6] to-[#38BDF8] text-transparent bg-clip-text">
+    <section className="relative bg-[var(--color-bg)] py-20 overflow-hidden">
+      {/* 🔥 Background Glow */}
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-[var(--color-primary)]/20 blur-[120px] rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[var(--color-secondary)]/20 blur-[120px] rounded-full"></div>
+
+      <div className="container mx-auto px-6">
+        {/* Title */}
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-[var(--color-text-primary)] mb-16">
+          My{" "}
+          <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-transparent bg-clip-text">
             Projects
           </span>
         </h2>
 
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {/* Cards */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="card bg-[#111827] shadow-xl rounded-lg overflow-hidden border border-[#14B8A6]/30 transition-all duration-300"
+              whileHover={{ y: -10 }}
+              className="group relative bg-[var(--color-card)] backdrop-blur-md border border-[var(--color-border)] rounded-xl overflow-hidden shadow-lg"
             >
-              <figure className="w-full h-64 overflow-hidden">
+              {/* Image */}
+              <div className="relative overflow-hidden">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-56 object-cover group-hover:scale-110 transition duration-500"
                 />
-              </figure>
 
-              <div className="card-body p-6 text-start">
-                <h3 className="text-2xl font-logo font-bold text-[#F1F5F9]">
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition">
+                  {project.previewLink && (
+                    <a
+                      href={project.previewLink}
+                      target="_blank"
+                      className="px-4 py-2 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black rounded-md text-sm font-semibold"
+                    >
+                      Live
+                    </a>
+                  )}
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    className="px-4 py-2 border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-md text-sm"
+                  >
+                    Code
+                  </a>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-5 text-left">
+                <h3 className="text-xl font-bold text-[var(--color-text-primary)]">
                   {project.title}
                 </h3>
-                <p className="text-[#94A3B8] mt-2 font-body">
+
+                <p className="text-[var(--color-text-secondary)] mt-2 text-sm">
                   {project.description}
                 </p>
 
-                <div className="card-actions mt-4">
-                  <label
-                    htmlFor={`project-modal-${index}`}
-                    className="bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120] font-button py-3 px-6 rounded-md shadow-lg hover:opacity-90 cursor-pointer"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    View Project
-                  </label>
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-xs px-3 py-1 bg-[var(--color-card)] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+
+                {/* Button */}
+                <button
+                  onClick={() => setSelectedProject(project)}
+                  className="mt-5 text-sm text-[var(--color-secondary)] hover:underline"
+                >
+                  View Details →
+                </button>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* DaisyUI Modal */}
-      {selectedProject && (
-        <input
-          type="checkbox"
-          id="project-modal"
-          className="modal-toggle"
-          checked={!!selectedProject}
-          readOnly
-        />
-      )}
-      {/* Modal */}
-      <div className="modal">
-        <div className="modal-box relative max-w-3xl w-11/12 md:w-3/4 lg:w-1/2 bg-[#111827] border border-[#14B8A6]/30 rounded-xl max-h-[90vh] overflow-y-auto">
-          <button
-            onClick={() => setSelectedProject(null)}
-            className="btn btn-sm btn-circle absolute right-4 top-4 bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120]"
-          >
-            ✕
-          </button>
+      {/* 🔥 Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <>
+            {/* Background */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.7 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="fixed inset-0 bg-black backdrop-blur-sm z-40"
+            />
 
-          {selectedProject && (
-            <>
-              {/* Properly sized image */}
-              <figure className="w-full h-64 sm:h-80 md:h-96 lg:h-96 overflow-hidden rounded-lg mt-6">
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="fixed inset-0 flex items-center justify-center z-50 px-4"
+            >
+              <div className="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-xl max-w-2xl w-full p-6 relative shadow-xl">
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 text-[var(--color-text-primary)] text-xl"
+                >
+                  ✕
+                </button>
+
                 <img
                   src={selectedProject.imageUrl}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover object-center"
+                  className="rounded-lg mb-4"
                 />
-              </figure>
 
-              <h3 className="text-3xl font-bold text-[#F1F5F9] mt-6">
-                {selectedProject.title}
-              </h3>
-              <p className="text-[#94A3B8] mt-2">
-                {selectedProject.description}
-              </p>
+                <h3 className="text-2xl font-bold text-[var(--color-text-primary)]">
+                  {selectedProject.title}
+                </h3>
 
-              {selectedProject.roles && (
-                <div className="mt-6 text-left">
-                  {selectedProject.roles.map((roleItem, idx) => (
-                    <div key={idx} className="mb-4">
-                      <h4 className="text-xl font-semibold text-[#F1F5F9] mb-2">
-                        {roleItem.role}
-                      </h4>
-                      <ul className="list-disc list-inside text-[#94A3B8] space-y-1">
-                        {roleItem.details.map((detail, index) => (
-                          <li key={index}>{detail}</li>
-                        ))}
-                      </ul>
-                    </div>
+                <p className="text-[var(--color-text-secondary)] mt-2">
+                  {selectedProject.description}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {selectedProject.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-xs px-3 py-1 bg-[var(--color-card)] rounded-full text-[var(--color-secondary)]"
+                    >
+                      {tech}
+                    </span>
                   ))}
                 </div>
-              )}
 
-              <h4 className="text-lg font-semibold text-[#F1F5F9] mt-4">
-                Technologies Used:
-              </h4>
-              <ul className="list-disc list-inside text-[#94A3B8] mt-2 space-y-2">
-                {selectedProject.technologies.map((tech, idx) => (
-                  <li key={idx}>{tech}</li>
-                ))}
-              </ul>
-
-              <div className="mt-6 flex justify-end space-x-4">
-                {selectedProject.previewLink && (
+                <div className="mt-6 flex gap-4">
+                  {selectedProject.previewLink && (
+                    <a
+                      href={selectedProject.previewLink}
+                      target="_blank"
+                      className="px-4 py-2 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black rounded-md"
+                    >
+                      Live Demo
+                    </a>
+                  )}
                   <a
-                    href={selectedProject.previewLink}
+                    href={selectedProject.githubLink}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                    className="px-4 py-2 border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-md"
                   >
-                    Live Preview
+                    GitHub
                   </a>
-                )}
-
-                <a
-                  href={selectedProject.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-sm bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-[#0B1120]"
-                >
-                  View on GitHub
-                </a>
+                </div>
               </div>
-            </>
-          )}
-        </div>
-      </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

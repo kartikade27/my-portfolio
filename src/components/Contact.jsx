@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -7,7 +9,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -18,89 +20,108 @@ const Contact = () => {
         formRef.current,
         "50scnYL_4XP1XGcKG"
       )
-      .then(
-        () => {
-          toast.success("Email Sent Successfully!", { position: "top-center", autoClose: 2000 });
-          formRef.current.reset();
-        },
-        (error) => {
-          console.error("Error:", error);
-          toast.error("Something went wrong!", { position: "top-center", autoClose: 2000 });
-        }
-      )
+      .then(() => {
+        toast.success("Message sent successfully 🚀");
+        formRef.current.reset();
+      })
+      .catch(() => {
+        toast.error("Something went wrong 😢");
+      })
       .finally(() => setLoading(false));
   };
 
   return (
-    <section id="contact" className="bg-[#0B1120] py-20 min-h-screen flex items-center font-body">
+    <section className="relative bg-[var(--color-bg)] py-20 overflow-hidden">
+      
       <ToastContainer position="top-center" autoClose={2000} />
 
-      <div className="container mx-auto px-6 text-white">
-        <h2 className="text-4xl font-logo font-extrabold text-center mb-12">
-          Contact
-          <span className="bg-gradient-to-r ml-2 from-[#14B8A6] to-[#38BDF8] text-transparent bg-clip-text">
-            Me
-          </span>
-        </h2>
+      {/* Glow */}
+      <div className="absolute top-0 left-0 w-[250px] h-[250px] bg-[var(--color-primary)]/20 blur-[120px] rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-[250px] h-[250px] bg-[var(--color-secondary)]/20 blur-[120px] rounded-full"></div>
 
-        <form
+      <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
+
+        {/* LEFT SIDE */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-[var(--color-text-primary)] mb-6">
+            Contact{" "}
+            <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-transparent bg-clip-text">
+              Me
+            </span>
+          </h2>
+
+          <p className="text-[var(--color-text-secondary)] mb-8 max-w-md">
+            I'm open to opportunities and collaborations. Feel free to reach out if you have a project or just want to connect.
+          </p>
+
+          <div className="space-y-4">
+
+            <div className="flex items-center gap-4 bg-[var(--color-card)] p-4 rounded-lg border border-[var(--color-border)]">
+              <FaEnvelope className="text-[var(--color-secondary)]" />
+              <span className="text-[var(--color-text-primary)]">
+                kartikade399@gmail.com
+              </span>
+            </div>
+
+            <div className="flex items-center gap-4 bg-[var(--color-card)] p-4 rounded-lg border border-[var(--color-border)]">
+              <FaMapMarkerAlt className="text-[var(--color-secondary)]" />
+              <span className="text-[var(--color-text-primary)]">
+                Mumbai, India
+              </span>
+            </div>
+
+          </div>
+        </motion.div>
+
+        {/* RIGHT SIDE FORM */}
+        <motion.form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="max-w-lg mx-auto p-8 rounded-2xl border border-transparent 
-                     hover:border-gradient-to-r hover:from-[#14B8A6] hover:to-[#38BDF8] 
-                     transition-all duration-300 bg-[#111827]"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-[var(--color-card)] backdrop-blur-md border border-[var(--color-border)] p-8 rounded-xl shadow-lg"
         >
-          <div className="form-control mb-4">
-            <label className="label font-body text-left">
-              <span className="label-text text-white">Name</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              className="input w-full font-body p-3 rounded-md bg-transparent border-[#14B8A6]/60 focus:border-[#14B8A6] focus:ring-1 focus:ring-[#38BDF8] focus:outline-none"
-              required
-            />
-          </div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            className="w-full mb-4 p-3 rounded-md bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] focus:border-[var(--color-secondary)] outline-none"
+          />
 
-          <div className="form-control mb-4">
-            <label className="label font-body text-left">
-              <span className="label-text text-white">Email</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              className="input w-full font-body p-3 rounded-md bg-transparent border-[#14B8A6]/60 focus:border-[#14B8A6] focus:ring-1 focus:ring-[#38BDF8] focus:outline-none"
-              required
-            />
-          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            className="w-full mb-4 p-3 rounded-md bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] focus:border-[var(--color-secondary)] outline-none"
+          />
 
-          <div className="form-control mb-4">
-            <label className="label font-body text-left">
-              <span className="label-text text-white">Message</span>
-            </label>
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows="5"
-              className="textarea w-full font-body p-3 rounded-md bg-transparent border-[#14B8A6]/60 focus:border-[#14B8A6] focus:ring-1 focus:ring-[#38BDF8] focus:outline-none"
-              required
-            />
-          </div>
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Your Message"
+            required
+            className="w-full mb-4 p-3 rounded-md bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] focus:border-[var(--color-secondary)] outline-none"
+          />
 
-          <div className="form-control mt-6">
-            <button
-              type="submit"
-              className={`w-full px-6 py-3 rounded-md font-bold text-white 
-                         bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] 
-                         hover:opacity-90 hover:scale-105 transition-transform duration-300 
-                         ${loading ? "cursor-not-allowed opacity-70" : ""}`}
-            >
-              {loading ? "Sending..." : "Send Message"}
-            </button>
-          </div>
-        </form>
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 rounded-lg font-semibold transition ${
+              loading
+                ? "bg-[var(--color-border)] cursor-not-allowed"
+                : "bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-bg)] hover:scale-105"
+            }`}
+          >
+            {loading ? "Sending..." : "Send Message 🚀"}
+          </button>
+        </motion.form>
       </div>
     </section>
   );

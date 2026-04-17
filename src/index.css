@@ -1,56 +1,116 @@
-
-/* Playfair Display - Signature / Headings */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
-/* Inter - Body text / Type animation */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
-/* Poppins - Buttons / CTA */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap'); 
-
-/* sora */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
-
-/* whisper  */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&family=Whisper&display=swap');
+/* ✅ Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700&display=swap');
 
 @import "tailwindcss";
 @plugin "daisyui";
 
-@theme{
-  --font-logo:"Playfair Display", sans-serif;
-  --font-button:"Poppins", sans-serif;
-  --font-sora:"Sora" ,sans-serif;
-  --font-whisper:"Whisper", cursive;
+/* 🎨 Theme System (Tailwind v4) */
+/* 🎨 Theme System (Modern Premium 2026 Upgrade) */
+@theme {
+  /* Fonts */
+  --font-heading: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
 
+  /* 🌈 Base Colors (Light Modern + Clean UI) */
+  --color-bg: #F7FAFF;          /* soft white-blue background */
+  --color-surface: #FFFFFF;     /* clean section surface */
+  --color-card: #F1F5F9;        /* soft gray card */
+
+  /* ✨ Text Colors */
+  --color-text-primary: #0F172A;   /* strong dark text */
+  --color-text-secondary: #334155; /* medium gray */
+  --color-text-muted: #64748B;     /* soft muted */
+
+  /* 🚀 Accent Colors (Colorful Gradient Feel) */
+  --color-primary: #7C3AED;     /* purple (premium creative) */
+  --color-secondary: #06B6D4;   /* cyan (fresh tech feel) */
+
+  /* 🧩 Borders (soft UI separation) */
+  --color-border: rgba(15, 23, 42, 0.08);
+
+  /* 🌟 Glow (soft colorful blur effect) */
+  --color-glow: rgba(124, 58, 237, 0.20);
 }
 
-
-
- body {
-  font-family: 'Inter', sans-serif;
-  background-color: #111827; 
-  color: #f9fafb; 
+/* 🌍 Global Styles */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
 }
 
+/* Smooth Scroll */
 html {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}
 
- @keyframes wave {
-            0% { transform: rotate(0deg); }
-            15% { transform: rotate(14deg); }
-            30% { transform: rotate(-8deg); }
-            40% { transform: rotate(14deg); }
-            50% { transform: rotate(-4deg); }
-            60% { transform: rotate(10deg); }
-            70% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-          }
-          .animate-wave {
-            display: inline-block;
-            animation: wave 2s infinite;
-          }
-          .origin-bottom {
-            transform-origin: 70% 70%;
-          }
+/* ✨ Selection (Premium Feel) */
+::selection {
+  background: var(--color-primary);
+  color: black;
+}
+
+/* 🌊 Wave Animation */
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  40% { transform: rotate(14deg); }
+  50% { transform: rotate(-4deg); }
+  60% { transform: rotate(10deg); }
+  70% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  animation: wave 2s infinite;
+}
+
+.origin-bottom {
+  transform-origin: 70% 70%;
+}
+
+/* 🎮 Gaming Grid Background */
+.animated-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 12s linear infinite;
+  opacity: 0.6;
+}
+
+/* 🔥 Moving Neon Glow Blob */
+.moving-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.25), transparent 60%);
+  top: 20%;
+  left: 10%;
+  filter: blur(60px);
+  animation: floatGlow 6s ease-in-out infinite alternate;
+}
+
+/* 🎮 Grid movement */
+@keyframes gridMove {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+/* ✨ Glow floating animation */
+@keyframes floatGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(120px, 80px) scale(1.2);
+  }
+}

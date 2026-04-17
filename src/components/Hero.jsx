@@ -1,76 +1,106 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
 import devImage from "../assets/img/dev.png";
 
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="bg-[#0B1120] py-16 font-body flex items-center justify-center min-h-[90vh]"
+      className="relative bg-[var(--color-bg)] min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-6 flex flex-col-reverse gap-8 md:gap-10 lg:flex-row items-center justify-center text-center lg:text-left">
+      {/* 🎮 Gaming Background Layer */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <div className="animated-grid"></div>
+        <div className="moving-glow"></div>
+      </div>
+
+      {/* 🔥 Existing Background Glow */}
+      <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-[var(--color-primary)]/20 blur-[120px] rounded-full"></div>
+      <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-[var(--color-secondary)]/20 blur-[120px] rounded-full"></div>
+
+      <div className="container mx-auto px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-between gap-10 z-10">
+        
         {/* Text Section */}
-        <div className="lg:w-1/2 lg:pr-12 mb-8 md:mb-10 lg:mb-0">
-          <div className="hero-text flex flex-col items-center lg:items-start">
-            {/* Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#F1F5F9] mb-4 font-heading leading-snug md:leading-tight lg:leading-tight">
-              I'm{" "}
-              <span className="bg-gradient-to-r from-[#14B8A6] to-[#38BDF8] text-transparent bg-clip-text">
-                Kartik Ade
-              </span>
-              <span className="inline-block animate-wave origin-bottom">👋</span>
-            </h1>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="lg:w-1/2 text-center lg:text-left"
+        >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-text-primary)] leading-tight">
+            Hi, I'm{" "}
+            <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-transparent bg-clip-text">
+              Kartik Ade
+            </span>{" "}
+            👋
+          </h1>
 
-            {/* Paragraph */}
-            <p className="text-sm sm:text-base md:text-lg text-[#94A3B8] leading-relaxed md:leading-relaxed max-w-lg">
-              Backend developer specializing in Java, Spring Boot, Spring Security, and JWT. Skilled in building secure, scalable, and maintainable APIs.
-            </p>
-          </div>
+          <p className="mt-4 text-[var(--color-text-secondary)] text-lg max-w-lg mx-auto lg:mx-0">
+            Backend Developer specializing in{" "}
+            <span className="text-[var(--color-secondary)] font-medium">
+              Java, Spring Boot & Secure APIs
+            </span>
+            . I build scalable and production-ready systems.
+          </p>
 
-          {/* Typewriting */}
-          <h3 className="text-lg sm:text-xl md:text-2xl text-[#94A3B8] font-medium mt-6">
+          <div className="mt-6 text-xl text-[var(--color-text-secondary)]">
             <TypeAnimation
               sequence={[
-                "Full Stack Development",
+                "Full Stack Developer 🚀",
                 2000,
-                "Frontend Development",
+                "Java Backend Developer ☕",
                 2000,
-                "Backend Development",
+                "Spring Boot Developer ⚡",
                 2000,
               ]}
-              wrapper="span"
-              cursor={true}
+              speed={50}
               repeat={Infinity}
             />
-          </h3>
-
-          {/* Buttons */}
-          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-            <a
-              href="#contact"
-              className="relative px-6 py-2 text-[#F1F5F9] font-semibold border border-[#14B8A6] rounded-md transition duration-300 hover:bg-gradient-to-r hover:from-[#14B8A6] hover:to-[#38BDF8] hover:text-black"
-            >
-              Contact Me
-            </a>
-            <a
-              href="#projects"
-              className="relative px-6 py-2 text-[#F1F5F9] font-semibold border border-[#14B8A6] rounded-md transition duration-300 hover:bg-gradient-to-r hover:from-[#14B8A6] hover:to-[#38BDF8] hover:text-black"
-            >
-              Projects
-            </a>
           </div>
-        </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#contact"
+              className="px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black font-semibold shadow-lg hover:shadow-[0_0_20px_var(--color-glow)] transition"
+            >
+              🚀 Hire Me
+            </motion.a>
+
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#projects"
+              className="px-6 py-3 rounded-lg border border-[var(--color-primary)] text-[var(--color-text-primary)] hover:bg-[var(--color-primary)]/10 transition"
+            >
+              View Projects
+            </motion.a>
+          </div>
+        </motion.div>
 
         {/* Image Section */}
-        <div className="lg:w-1/2 w-full flex justify-center lg:justify-end">
-          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl xl:max-w-2xl border border-[#14B8A6]/50 rounded-xl overflow-hidden shadow-lg">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="lg:w-1/2 flex justify-center"
+        >
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="relative"
+          >
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] blur-xl opacity-20"></div>
+
             <img
               src={devImage}
-              alt="Kartik coding"
-              className="w-full h-auto object-cover"
+              alt="Developer"
+              className="relative rounded-xl border border-[var(--color-border)] shadow-2xl"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
