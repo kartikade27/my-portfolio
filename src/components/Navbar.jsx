@@ -10,6 +10,7 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // ✅ Scroll effect navbar
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -18,11 +19,24 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ✅ 🔥 IMPORTANT: Lock scroll when menu open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[var(--color-bg)]/95 backdrop-blur-lg shadow-lg border-b border-[var(--color-border)]"
+          ? "bg-[var(--color-bg)] shadow-md border-b border-[var(--color-border)]"
           : "bg-transparent"
       }`}
     >
@@ -63,7 +77,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.95 }}
             href={resume}
             download
-            className="px-5 py-2 rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black font-semibold shadow-md hover:shadow-[0_0_20px_var(--color-glow)] transition"
+            className="px-5 py-2 rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black font-semibold shadow-md"
           >
             Resume
           </motion.a>
@@ -81,22 +95,26 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Blur Background */}
+            {/* ✅ FIXED Overlay (NO BLUR) */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black backdrop-blur-sm"
+              className="fixed inset-0 bg-black/70 z-[90]"
             />
 
-            {/* Menu Panel (SIMPLE LEFT SLIDE) */}
+            {/* ✅ FINAL Sidebar */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="fixed top-0 left-0 h-full w-72 bg-[var(--color-surface)] p-6 shadow-xl border-r border-[var(--color-border)]"
+              transition={{ duration: 0.3 }}
+              style={{
+                backgroundColor: "#ffffff",
+                transform: "translateZ(0)",
+              }}
+              className="fixed top-0 left-0 h-screen w-72 z-[100] p-6 shadow-2xl border-r border-[var(--color-border)]"
             >
               {/* Logo */}
               <div className="flex items-center space-x-3 mb-10">
@@ -110,7 +128,7 @@ const Navbar = () => {
                 </span>
               </div>
 
-              {/* Menu Items */}
+              {/* Menu */}
               <div className="flex flex-col space-y-6 text-lg text-[var(--color-text-secondary)]">
                 {["Home", "About", "Projects", "Contact"].map((item) => (
                   <a
