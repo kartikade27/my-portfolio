@@ -15,10 +15,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_4dv4y1m",
-        "template_7kqgfap",
+        "service_tfh7o8o",
+        "template_n3x0hme",
         formRef.current,
-        "50scnYL_4XP1XGcKG"
+        "bSZ4ZGfojyuhPTZPN"
       )
       .then(() => {
         toast.success("Message sent successfully 🚀");
@@ -31,8 +31,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative bg-[var(--color-bg)] py-20 overflow-hidden">
-      
+    <section
+      id="contact"
+      className="relative bg-[var(--color-bg)] py-20 overflow-hidden"
+    >
       <ToastContainer position="top-center" autoClose={2000} />
 
       {/* Glow */}
@@ -40,7 +42,6 @@ const Contact = () => {
       <div className="absolute bottom-0 right-0 w-[250px] h-[250px] bg-[var(--color-secondary)]/20 blur-[120px] rounded-full"></div>
 
       <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
-
         {/* LEFT SIDE */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -55,11 +56,11 @@ const Contact = () => {
           </h2>
 
           <p className="text-[var(--color-text-secondary)] mb-8 max-w-md">
-            I'm open to opportunities and collaborations. Feel free to reach out if you have a project or just want to connect.
+            I'm open to opportunities and collaborations. Feel free to reach
+            out if you have a project or just want to connect.
           </p>
 
           <div className="space-y-4">
-
             <div className="flex items-center gap-4 bg-[var(--color-card)] p-4 rounded-lg border border-[var(--color-border)]">
               <FaEnvelope className="text-[var(--color-secondary)]" />
               <span className="text-[var(--color-text-primary)]">
@@ -73,7 +74,6 @@ const Contact = () => {
                 Mumbai, India
               </span>
             </div>
-
           </div>
         </motion.div>
 
@@ -99,6 +99,13 @@ const Contact = () => {
             name="email"
             placeholder="Your Email"
             required
+            className="w-full mb-4 p-3 rounded-md bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] focus:border-[var(--color-secondary)] outline-none"
+          />
+
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject"
             className="w-full mb-4 p-3 rounded-md bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] focus:border-[var(--color-secondary)] outline-none"
           />
 

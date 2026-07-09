@@ -4,60 +4,54 @@ import { motion, AnimatePresence } from "framer-motion";
 import kartik from "../assets/img/kartik.png";
 import resume from "../assets/resume/Kartik_Ade_Java_Developer_Fresher_pdf.pdf";
 
+const NAV_LINKS = ["Home", "About", "Projects", "Contact"];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
-  // ✅ Scroll effect navbar
+  // Scroll state
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ 🔥 IMPORTANT: Lock scroll when menu open
+  // Body scroll lock
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    return () => (document.body.style.overflow = "auto");
   }, [isOpen]);
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[var(--color-bg)] shadow-md border-b border-[var(--color-border)]"
+          ? "bg-[var(--color-bg)] border-b border-[var(--color-border)] shadow-sm"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      {/* Container */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <div className="flex items-center space-x-3 cursor-pointer">
+        <div className="flex items-center gap-3">
           <motion.img
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.08 }}
             src={kartik}
             alt="Logo"
-            className="w-10 rounded-full border-2 border-[var(--color-primary)]"
+            className="w-9 h-9 rounded-full border border-[var(--color-primary)] object-cover"
           />
-          <span className="text-xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-transparent bg-clip-text">
+          <span className="text-lg sm:text-xl font-semibold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
             Kartik
           </span>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-10 text-[15px] font-medium text-[var(--color-text-primary)]">
-          {["Home", "About", "Projects", "Contact"].map((item) => (
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-text-primary)]">
+          {NAV_LINKS.map((item) => (
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -65,72 +59,69 @@ const Navbar = () => {
               className="relative group"
             >
               {item}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] transition-all duration-300 group-hover:w-full" />
             </motion.a>
           ))}
         </div>
 
-        {/* Resume Button */}
+        {/* CTA */}
         <div className="hidden md:block">
           <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.04 }}
             href={resume}
             download
-            className="px-5 py-2 rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black font-semibold shadow-md"
+            className="px-4 py-2 text-sm rounded-md bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black font-medium"
           >
             Resume
           </motion.a>
         </div>
 
-        {/* Mobile Button */}
-        <div className="md:hidden text-[var(--color-text-primary)]">
-          <button onClick={toggleMenu}>
-            {isOpen ? <LuX size={26} /> : <LuMenu size={26} />}
-          </button>
-        </div>
+        {/* Mobile Toggle */}
+        <button
+          className="md:hidden text-[var(--color-text-primary)]"
+          onClick={toggleMenu}
+        >
+          {isOpen ? <LuX size={24} /> : <LuMenu size={24} />}
+        </button>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* ✅ FIXED Overlay (NO BLUR) */}
+            {/* Overlay */}
             <motion.div
+              className="fixed inset-0 bg-black/60 z-40 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className=" md:hidden fixed inset-0 bg-black/70 z-[90]"
             />
 
-            {/* ✅ FINAL Sidebar */}
-            <motion.div
+            {/* Sidebar */}
+            <motion.aside
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ duration: 0.3 }}
-              style={{
-                backgroundColor: "#ffffff",
-                transform: "translateZ(0)",
-              }}
-              className="fixed top-0 left-0 md:hidden h-screen w-72 z-[100] p-6 shadow-2xl border-r border-[var(--color-border)]"
+              transition={{ duration: 0.25 }}
+              className="fixed top-0 left-0 h-full w-[85%] max-w-sm bg-white z-50 md:hidden p-6 flex flex-col"
             >
-              {/* Logo */}
-              <div className="flex items-center space-x-3 mb-10">
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-10">
                 <img
                   src={kartik}
                   alt="logo"
-                  className="w-10 rounded-full border-2 border-[var(--color-primary)]"
+                  className="w-9 h-9 rounded-full border border-[var(--color-primary)]"
                 />
-                <span className="text-lg font-bold text-[var(--color-text-primary)]">
+                <span className="font-semibold text-lg text-[var(--color-text-primary)]">
                   Kartik
                 </span>
               </div>
 
-              {/* Menu */}
-              <div className="flex flex-col space-y-6 text-lg text-[var(--color-text-secondary)]">
-                {["Home", "About", "Projects", "Contact"].map((item) => (
+              {/* Links */}
+              <nav className="flex flex-col gap-5 text-base text-[var(--color-text-secondary)]">
+                {NAV_LINKS.map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -140,16 +131,17 @@ const Navbar = () => {
                     {item}
                   </a>
                 ))}
+              </nav>
 
-                <a
-                  href={resume}
-                  download
-                  className="mt-6 px-4 py-2 rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black font-semibold text-center"
-                >
-                  Resume
-                </a>
-              </div>
-            </motion.div>
+              {/* CTA */}
+              <a
+                href={resume}
+                download
+                className="mt-auto px-4 py-2 rounded-md text-center bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black font-medium"
+              >
+                Resume
+              </a>
+            </motion.aside>
           </>
         )}
       </AnimatePresence>
