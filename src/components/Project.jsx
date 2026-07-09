@@ -125,79 +125,94 @@ const Project = () => {
 
       {/* 🔥 Modal */}
       <AnimatePresence>
-        {selectedProject && (
-          <>
-            {/* Background */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.7 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-black backdrop-blur-sm z-40"
+  {selectedProject && (
+    <>
+      {/* Background */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setSelectedProject(null)}
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
+      />
+
+      {/* Modal */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.85 }}
+        transition={{ duration: 0.25 }}
+        className="fixed inset-0 flex items-center justify-center z-50 px-4"
+      >
+        <div className="relative bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl shadow-2xl overflow-hidden max-w-2xl w-full">
+
+          {/* Image */}
+          <div className="relative">
+            <img
+              src={selectedProject.imageUrl}
+              alt={selectedProject.title}
+              className="w-full h-72 object-cover"
             />
 
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="fixed inset-0 flex items-center justify-center z-50 px-4"
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 hover:bg-red-500 text-white flex items-center justify-center text-xl transition-all duration-300"
             >
-              <div className="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-xl max-w-2xl w-full p-6 relative shadow-xl">
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 text-[var(--color-text-primary)] text-xl"
+              ✕
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            <h3 className="text-3xl font-bold text-[var(--color-text-primary)]">
+              {selectedProject.title}
+            </h3>
+
+            <p className="text-[var(--color-text-secondary)] mt-4 leading-7">
+              {selectedProject.description}
+            </p>
+
+            {/* Tech Stack */}
+            <div className="flex flex-wrap gap-2 mt-6">
+              {selectedProject.technologies.map((tech, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 text-sm rounded-full border border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-secondary)]"
                 >
-                  ✕
-                </button>
+                  {tech}
+                </span>
+              ))}
+            </div>
 
-                <img
-                  src={selectedProject.imageUrl}
-                  className="rounded-lg mb-4"
-                />
+            {/* Buttons */}
+            <div className="flex gap-4 mt-8">
+              {selectedProject.previewLink && (
+                <a
+                  href={selectedProject.previewLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-lg font-semibold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black"
+                >
+                  🚀 Live Demo
+                </a>
+              )}
 
-                <h3 className="text-2xl font-bold text-[var(--color-text-primary)]">
-                  {selectedProject.title}
-                </h3>
-
-                <p className="text-[var(--color-text-secondary)] mt-2">
-                  {selectedProject.description}
-                </p>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {selectedProject.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs px-3 py-1 bg-[var(--color-card)] rounded-full text-[var(--color-secondary)]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-6 flex gap-4">
-                  {selectedProject.previewLink && (
-                    <a
-                      href={selectedProject.previewLink}
-                      target="_blank"
-                      className="px-4 py-2 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-black rounded-md"
-                    >
-                      Live Demo
-                    </a>
-                  )}
-                  <a
-                    href={selectedProject.githubLink}
-                    target="_blank"
-                    className="px-4 py-2 border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-md"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+              <a
+                href={selectedProject.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-card)] transition"
+              >
+                💻 GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
     </section>
   );
 };
