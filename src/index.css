@@ -1,65 +1,156 @@
-/* ✅ Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700&display=swap');
+/* =========================================================
+   🌐 GOOGLE FONTS
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
+
 @plugin "daisyui";
 
-/* 🎨 Theme System (Tailwind v4) */
-/* 🎨 Theme System (Modern Premium 2026 Upgrade) */
+/* =========================================================
+   🎨 PREMIUM DEVELOPER THEME
+   React • Java • Spring Boot Portfolio
+========================================================= */
+
 @theme {
-  /* Fonts */
+  /* -------------------------
+     Typography
+  ------------------------- */
+
   --font-heading: "Sora", sans-serif;
   --font-body: "Inter", sans-serif;
 
-  /* 🌈 Base Colors (Light Modern + Clean UI) */
-  --color-bg: #F7FAFF;          /* soft white-blue background */
-  --color-surface: #FFFFFF;     /* clean section surface */
-  --color-card: #F1F5F9;        /* soft gray card */
+  /* -------------------------
+     Background
+  ------------------------- */
 
-  /* ✨ Text Colors */
-  --color-text-primary: #0F172A;   /* strong dark text */
-  --color-text-secondary: #334155; /* medium gray */
-  --color-text-muted: #64748B;     /* soft muted */
+  --color-bg: #080b12;
+  --color-surface: #0d111a;
+  --color-card: #111722;
+  --color-card-hover: #151c29;
 
-  /* 🚀 Accent Colors (Colorful Gradient Feel) */
-  --color-primary: #7C3AED;     /* purple (premium creative) */
-  --color-secondary: #06B6D4;   /* cyan (fresh tech feel) */
+  /* -------------------------
+     Text
+  ------------------------- */
 
-  /* 🧩 Borders (soft UI separation) */
-  --color-border: rgba(15, 23, 42, 0.08);
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #8892a3;
 
-  /* 🌟 Glow (soft colorful blur effect) */
-  --color-glow: rgba(124, 58, 237, 0.20);
+  /* -------------------------
+     Brand Colors
+  ------------------------- */
+
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-secondary: #8b5cf6;
+  --color-accent: #60a5fa;
+
+  /* -------------------------
+     Borders
+  ------------------------- */
+
+  --color-border: rgba(148, 163, 184, 0.12);
+  --color-border-hover: rgba(96, 165, 250, 0.3);
+
+  /* -------------------------
+     Glow
+  ------------------------- */
+
+  --color-glow: rgba(59, 130, 246, 0.12);
+  --color-glow-secondary: rgba(139, 92, 246, 0.1);
 }
 
-/* 🌍 Global Styles */
+/* =========================================================
+   🌍 GLOBAL
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+  overflow-x: hidden;
+}
+
 body {
+  margin: 0;
   font-family: var(--font-body);
-  background-color: var(--color-bg);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   📝 HEADINGS
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
   color: var(--color-text-primary);
 }
 
-/* Smooth Scroll */
-html {
-  scroll-behavior: smooth;
+/* =========================================================
+   🔗 LINKS
+========================================================= */
+
+a {
+  text-decoration: none;
 }
 
-/* ✨ Selection (Premium Feel) */
+/* =========================================================
+   ✨ TEXT SELECTION
+========================================================= */
+
 ::selection {
-  background: var(--color-primary);
-  color: black;
+  background: rgba(59, 130, 246, 0.35);
+  color: #ffffff;
 }
 
-/* 🌊 Wave Animation */
+/* =========================================================
+   👋 WAVE ANIMATION
+========================================================= */
+
 @keyframes wave {
-  0% { transform: rotate(0deg); }
-  15% { transform: rotate(14deg); }
-  30% { transform: rotate(-8deg); }
-  40% { transform: rotate(14deg); }
-  50% { transform: rotate(-4deg); }
-  60% { transform: rotate(10deg); }
-  70% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  15% {
+    transform: rotate(14deg);
+  }
+
+  30% {
+    transform: rotate(-8deg);
+  }
+
+  40% {
+    transform: rotate(14deg);
+  }
+
+  50% {
+    transform: rotate(-4deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  70% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .animate-wave {
@@ -71,38 +162,344 @@ html {
   transform-origin: 70% 70%;
 }
 
-/* 🎮 Gaming Grid Background */
+/* =========================================================
+   🌐 PREMIUM TECH GRID
+========================================================= */
+
 .animated-grid {
-  position: fixed; /* 🔥 absolute → fixed */
+  position: absolute;
   inset: 0;
-  z-index: 0; /* 🔥 important */
+
+  z-index: 0;
   pointer-events: none;
 
   background-image:
-    linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: gridMove 12s linear infinite;
-  opacity: 0.6;
+    linear-gradient(
+      rgba(59, 130, 246, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(59, 130, 246, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  animation: gridMove 18s linear infinite;
+
+  opacity: 0.45;
+
+  will-change: background-position;
 }
 
-/* 🔥 Glow Blob (FIXED) */
+/* =========================================================
+   🎞 GRID ANIMATION
+========================================================= */
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 70px 70px;
+  }
+}
+
+/* =========================================================
+   🔵 SOFT BLUE GLOW
+========================================================= */
+
 .moving-glow {
-  position: fixed; /* 🔥 absolute → fixed */
-  z-index: 0;       /* 🔥 important */
+  position: fixed;
+
+  z-index: 0;
+
   pointer-events: none;
 
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(124,58,237,0.25), transparent 60%);
-  top: 20%;
-  left: 10%;
-  filter: blur(60px);
-  animation: floatGlow 6s ease-in-out infinite alternate;
+  width: 520px;
+  height: 520px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.11),
+      transparent 68%
+    );
+
+  top: 10%;
+  left: 5%;
+
+  filter: blur(80px);
+
+  animation:
+    floatGlow 9s ease-in-out infinite alternate;
+
+  will-change: transform;
 }
 
-/* 🔥 MAIN CONTENT LAYER */
+/* =========================================================
+   🟣 SECONDARY PURPLE GLOW
+========================================================= */
+
+.moving-glow::after {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -700px;
+  top: 250px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.08),
+      transparent 70%
+    );
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   🌊 GLOW ANIMATION
+========================================================= */
+
+@keyframes floatGlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(40px, -25px, 0) scale(1.04);
+  }
+
+  100% {
+    transform: translate3d(80px, 20px, 0) scale(1);
+  }
+}
+
+/* =========================================================
+   🧱 MAIN CONTENT
+========================================================= */
+
 #root {
   position: relative;
   z-index: 10;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   🃏 COMMON PREMIUM CARD
+========================================================= */
+
+.premium-card {
+  background: rgba(17, 23, 34, 0.75);
+
+  border: 1px solid var(--color-border);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.premium-card:hover {
+  border-color: var(--color-border-hover);
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(59, 130, 246, 0.06);
+}
+
+/* =========================================================
+   🔘 PREMIUM BUTTON
+========================================================= */
+
+.btn-primary-premium {
+  background: var(--color-primary);
+
+  color: white;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn-primary-premium:hover {
+  background: var(--color-primary-hover);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 30px rgba(37, 99, 235, 0.25);
+}
+
+/* =========================================================
+   🔗 CUSTOM SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080b12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #273244;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* =========================================================
+   📱 MOBILE PERFORMANCE OPTIMIZATION
+========================================================= */
+
+@media (max-width: 768px) {
+  /* -------------------------
+     Mobile Grid
+  ------------------------- */
+
+  .animated-grid {
+    background-size: 55px 55px;
+
+    animation-duration: 25s;
+
+    opacity: 0.3;
+
+    will-change: background-position;
+  }
+
+  /* -------------------------
+     Mobile Blue Glow
+  ------------------------- */
+
+  .moving-glow {
+    width: 300px;
+    height: 300px;
+
+    filter: blur(60px);
+
+    animation-duration: 12s;
+
+    opacity: 0.8;
+  }
+
+  /* -------------------------
+     Mobile Purple Glow
+  ------------------------- */
+
+  .moving-glow::after {
+    width: 250px;
+    height: 250px;
+
+    filter: blur(60px);
+  }
+
+  /* -------------------------
+     Reduce Card Blur
+  ------------------------- */
+
+  .premium-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* =========================================================
+   📱 SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .moving-glow {
+    width: 240px;
+    height: 240px;
+
+    filter: blur(50px);
+  }
+
+  .moving-glow::after {
+    width: 200px;
+    height: 200px;
+
+    filter: blur(50px);
+  }
+
+  .animated-grid {
+    background-size: 50px 50px;
+
+    opacity: 0.25;
+  }
+}
+
+/* =========================================================
+   🖥️ LARGE SCREEN OPTIMIZATION
+========================================================= */
+
+@media (min-width: 1280px) {
+  .animated-grid {
+    opacity: 0.45;
+  }
+
+  .moving-glow {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   ♿ REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animated-grid,
+  .moving-glow {
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   📱 TOUCH DEVICE OPTIMIZATION
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  .premium-card:hover {
+    transform: none;
+  }
+
+  .btn-primary-premium:hover {
+    transform: none;
+  }
 }
