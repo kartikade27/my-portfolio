@@ -547,7 +547,7 @@ const Contact = () => {
 
               {/* Contact Details */}
 
-              <div className="relative mt-8 space-y-3">
+              <div className="relative mt-8 space-y-7">
                 {contactInfo.map((item, index) => (
                   <ContactInfoCard
                     key={item.title}
