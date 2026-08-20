@@ -2056,7 +2056,7 @@ Error generating stack: `+r.message+`
                   sm:text-base\r
                   leading-7\r
                   text-[var(--color-text-secondary)]\r
-                `,children:"I'm open to software development opportunities, backend projects and collaborations. If you have an idea or opportunity you'd like to discuss, feel free to reach out."}),p.jsx("div",{className:"relative mt-8 space-y-3",children:g8.map((c,d)=>p.jsx(v8,{item:c,index:d},c.title))}),p.jsxs("div",{className:`\r
+                `,children:"I'm open to software development opportunities, backend projects and collaborations. If you have an idea or opportunity you'd like to discuss, feel free to reach out."}),p.jsx("div",{className:"relative mt-8 space-y-7",children:g8.map((c,d)=>p.jsx(v8,{item:c,index:d},c.title))}),p.jsxs("div",{className:`\r
                   relative\r
                   mt-6\r
                   flex\r
