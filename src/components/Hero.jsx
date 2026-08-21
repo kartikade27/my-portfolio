@@ -38,10 +38,12 @@ const SkillIcon = ({ icon, name, className }) => {
             damping: 15,
           }}
           className="
-            w-14
-            h-14
-            sm:w-16
-            sm:h-16
+            w-12
+            h-12
+            sm:w-14
+            sm:h-14
+            lg:w-16
+            lg:h-16
             rounded-full
             flex
             items-center
@@ -50,8 +52,9 @@ const SkillIcon = ({ icon, name, className }) => {
             border
             border-white/[0.10]
             text-blue-400
-            text-2xl
-            sm:text-3xl
+            text-xl
+            sm:text-2xl
+            lg:text-3xl
             shadow-[0_8px_25px_rgba(0,0,0,0.25)]
             backdrop-blur-md
             transition-all
@@ -121,12 +124,13 @@ const Hero = () => {
         justify-center
         overflow-hidden
         bg-[var(--color-bg)]
+        pt-20
+        lg:pt-0
       "
     >
 
       {/* =====================================================
           SUBTLE BACKGROUND GLOW
-          Grid Removed
       ====================================================== */}
 
       <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
@@ -472,22 +476,31 @@ const Hero = () => {
             items-center
             justify-center
             shrink-0
+            pt-6
+            sm:pt-8
+            lg:pt-0
           "
         >
 
-          {/* ORBIT AREA */}
+          {/* =================================================
+              ORBIT AREA
+          ================================================== */}
 
           <div
             className="
               relative
-              w-[320px]
-              h-[320px]
-              sm:w-[430px]
-              sm:h-[430px]
+              w-[280px]
+              h-[280px]
+              sm:w-[360px]
+              sm:h-[360px]
+              lg:w-[430px]
+              lg:h-[430px]
             "
           >
 
-            {/* CENTER GLOW */}
+            {/* =================================================
+                CENTER GLOW
+            ================================================== */}
 
             <motion.div
               animate={{
@@ -511,8 +524,10 @@ const Hero = () => {
             >
               <div
                 className="
-                  w-44
-                  h-44
+                  w-36
+                  h-36
+                  sm:w-44
+                  sm:h-44
                   rounded-full
                   bg-blue-500/[0.10]
                   blur-3xl
@@ -520,7 +535,9 @@ const Hero = () => {
               />
             </motion.div>
 
-            {/* ROTATING ORBIT */}
+            {/* =================================================
+                ROTATING ORBIT
+            ================================================== */}
 
             <motion.div
               animate={{
@@ -577,7 +594,8 @@ const Hero = () => {
               <div
                 className="
                   absolute
-                  inset-[45px]
+                  inset-[35px]
+                  sm:inset-[45px]
                   rounded-full
                   border
                   border-dashed
@@ -590,96 +608,114 @@ const Hero = () => {
               <div
                 className="
                   absolute
-                  inset-[90px]
+                  inset-[70px]
+                  sm:inset-[90px]
                   rounded-full
                   border
                   border-white/[0.07]
                 "
               />
 
-              {/* JAVA */}
+              {/* =================================================
+                  JAVA
+              ================================================== */}
 
               <SkillIcon
                 icon={<FaJava />}
                 name="Java"
                 className="
-                  top-[-5px]
+                  top-[0px]
                   left-1/2
                   -translate-x-1/2
                 "
               />
 
-              {/* SPRING BOOT */}
+              {/* =================================================
+                  SPRING BOOT
+              ================================================== */}
 
               <SkillIcon
                 icon={<SiSpringboot />}
                 name="Spring Boot"
                 className="
                   top-[18%]
-                  right-[2%]
+                  right-[0%]
                 "
               />
 
-              {/* HIBERNATE */}
+              {/* =================================================
+                  HIBERNATE
+              ================================================== */}
 
               <SkillIcon
                 icon={<SiHibernate />}
                 name="Hibernate"
                 className="
                   bottom-[18%]
-                  right-[2%]
+                  right-[0%]
                 "
               />
 
-              {/* MYSQL */}
+              {/* =================================================
+                  MYSQL
+              ================================================== */}
 
               <SkillIcon
                 icon={<SiMysql />}
                 name="MySQL"
                 className="
-                  bottom-[-5px]
+                  bottom-[0px]
                   left-1/2
                   -translate-x-1/2
                 "
               />
 
-              {/* REACT */}
+              {/* =================================================
+                  REACT
+              ================================================== */}
 
               <SkillIcon
                 icon={<FaReact />}
                 name="React"
                 className="
                   bottom-[18%]
-                  left-[2%]
+                  left-[0%]
                 "
               />
 
-              {/* SPRING SECURITY */}
+              {/* =================================================
+                  SPRING SECURITY
+              ================================================== */}
 
               <SkillIcon
                 icon={<SiSpringsecurity />}
                 name="Spring Security"
                 className="
                   top-[18%]
-                  left-[2%]
+                  left-[0%]
                 "
               />
 
-              {/* GITHUB */}
+              {/* =================================================
+                  GITHUB
+              ================================================== */}
 
               <SkillIcon
                 icon={<FaGithub />}
                 name="GitHub"
                 className="
                   top-1/2
-                  right-[-25px]
+                  right-[-18px]
+                  sm:right-[-25px]
                   -translate-y-1/2
                 "
               />
 
             </motion.div>
 
-            {/* CENTER BACKEND */}
+            {/* =================================================
+                CENTER BACKEND
+            ================================================== */}
 
             <motion.div
               animate={{
@@ -701,10 +737,12 @@ const Hero = () => {
                 left-1/2
                 -translate-x-1/2
                 -translate-y-1/2
-                w-28
-                h-28
-                sm:w-32
-                sm:h-32
+                w-24
+                h-24
+                sm:w-28
+                sm:h-28
+                lg:w-32
+                lg:h-32
                 rounded-full
                 border
                 border-blue-400/30
@@ -719,15 +757,18 @@ const Hero = () => {
 
               <FaJava
                 className="
-                  text-5xl
+                  text-4xl
+                  sm:text-5xl
                   text-blue-400
                 "
               />
 
               <span
                 className="
-                  mt-2
-                  text-xs
+                  mt-1
+                  sm:mt-2
+                  text-[10px]
+                  sm:text-xs
                   font-semibold
                   text-slate-200
                 "
