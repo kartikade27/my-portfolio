@@ -2416,11 +2416,7 @@ Error generating stack: `+r.message+`
               text-slate-500\r
               text-center\r
               sm:text-left\r
-            `,children:["© ",new Date().getFullYear()," Kartik Ade. All rights reserved."]}),p.jsxs("p",{className:`\r
-              text-xs\r
-              text-slate-500\r
-              text-center\r
-            `,children:["Built with"," ",p.jsx("span",{className:"text-blue-400",children:"React"})," ","&"," ",p.jsx("span",{className:"text-blue-400",children:"Tailwind CSS"})]}),p.jsx(rt.button,{onClick:l,whileHover:{y:-3},whileTap:{scale:.95},"aria-label":"Back to top",className:`\r
+            `,children:["© ",new Date().getFullYear()," Kartik Ade. All rights reserved."]}),p.jsx(rt.button,{onClick:l,whileHover:{y:-3},whileTap:{scale:.95},"aria-label":"Back to top",className:`\r
               flex\r
               items-center\r
               justify-center\r
