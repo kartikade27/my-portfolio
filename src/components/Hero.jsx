@@ -773,7 +773,7 @@ const Hero = () => {
                   text-slate-200
                 "
               >
-                Backend
+                Java Developer
               </span>
 
             </motion.div>
