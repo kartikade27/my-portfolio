@@ -677,7 +677,7 @@ Error generating stack: `+r.message+`
                   sm:text-xs\r
                   font-semibold\r
                   text-slate-200\r
-                `,children:"Backend"})]})]})})]})]}),o6="/my-portfolio/assets/man-Bor3Wn2i.jpg",u6=[{icon:p.jsx(eb,{}),title:"Experience",value:"Java Development"},{icon:p.jsx(f1,{}),title:"Specialization",value:"Backend Development"},{icon:p.jsx(rb,{}),title:"Tech Stack",value:"Java · Spring Boot"},{icon:p.jsx(cb,{}),title:"Career Goal",value:"Software Engineer"}],c6=()=>p.jsxs("section",{id:"about",className:`\r
+                `,children:"Java Developer"})]})]})})]})]}),o6="/my-portfolio/assets/man-Bor3Wn2i.jpg",u6=[{icon:p.jsx(eb,{}),title:"Experience",value:"Java Development"},{icon:p.jsx(f1,{}),title:"Specialization",value:"Backend Development"},{icon:p.jsx(rb,{}),title:"Tech Stack",value:"Java · Spring Boot"},{icon:p.jsx(cb,{}),title:"Career Goal",value:"Software Engineer"}],c6=()=>p.jsxs("section",{id:"about",className:`\r
         relative\r
         min-h-screen\r
         flex\r
