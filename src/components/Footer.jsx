@@ -565,24 +565,7 @@ const Footer = () => {
             All rights reserved.
           </p>
 
-          {/* Built With */}
-
-          <p
-            className="
-              text-xs
-              text-slate-500
-              text-center
-            "
-          >
-            Built with{" "}
-            <span className="text-blue-400">
-              React
-            </span>{" "}
-            &{" "}
-            <span className="text-blue-400">
-              Tailwind CSS
-            </span>
-          </p>
+        
 
           {/* Back To Top */}
 
